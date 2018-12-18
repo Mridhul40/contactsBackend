@@ -1,7 +1,7 @@
 const express = require('express');
 var cors = require('cors');
 const { db } = require('./db/index');
-
+const port = process.env.PORT || 4040
 const app = express()
 
 app.use(cors());
@@ -14,7 +14,7 @@ app.use('/messages', require('./routes/messages'));
 db.sync()
   .then(() => {
   console.log("Database synced");
-  app.listen(4040, () => {
+  app.listen(port, () => {
     console.log("Server start on port 4040");
   });
 }).catch(console.error);
